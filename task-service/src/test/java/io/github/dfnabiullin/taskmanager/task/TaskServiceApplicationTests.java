@@ -1,10 +1,10 @@
-package io.github.dfnabiullin.taskmanager;
+package io.github.dfnabiullin.taskmanager.task;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TaskManagerApplicationTests {
+class TaskServiceApplicationTests {
 
     @Test
     void contextLoads() {
