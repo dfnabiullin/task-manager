@@ -1,0 +1,3 @@
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+ALTER TABLE users
+    ADD COLUMN uuid UUID NOT NULL UNIQUE DEFAULT gen_random_uuid()

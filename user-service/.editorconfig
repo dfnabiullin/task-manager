@@ -1,0 +1,4 @@
+root = true
+
+[*.java]
+ij_java_method_call_chain_wrap = on_every_item
