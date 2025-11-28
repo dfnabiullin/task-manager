@@ -27,6 +27,14 @@ class TaskExceptionHandler extends ResponseEntityExceptionHandler {
         return problemDetail;
     }
 
+    @ExceptionHandler(UserValidationException.class)
+    public ProblemDetail handleUserValidationException(UserValidationException ex, Locale locale) {
+        ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
+        problemDetail.setTitle("Assigned User Not Valid");
+        problemDetail.setDetail(messageSource.getMessage("error.user.notValid", new Object[]{ex.getUuid()}, locale));
+        return problemDetail;
+    }
+
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, @NonNull HttpHeaders headers, @NonNull HttpStatusCode status, @NonNull WebRequest request) {
         ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
