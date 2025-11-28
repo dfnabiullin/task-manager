@@ -1,0 +1,49 @@
+services:
+  user-service:
+    build: ./user-service
+    container_name: user_service_app
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://user_service_db:5432/user_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    depends_on:
+      - user_service_db
+  user_service_db:
+    image: postgres:17-alpine
+    container_name: user_service_db
+    environment:
+      - POSTGRES_DB=user_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - user_service_data:/var/lib/postgresql/data
+  task-service:
+    build: ./task-service
+    container_name: task_service_app
+    ports:
+      - "8081:8081"
+    environment:
+      - APPLICATION_CONFIG_USER_URL=http://user-service:8080
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://task_service_db:5432/task_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    depends_on:
+      - task_service_db
+  task_service_db:
+    image: postgres:17-alpine
+    container_name: task_service_db
+    environment:
+      - POSTGRES_DB=task_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - task_service_data:/var/lib/postgresql/data
+volumes:
+  user_service_data:
+  task_service_data:

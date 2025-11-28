@@ -12,3 +12,8 @@ spring:
   threads:
     virtual:
       enabled: true
+application:
+  config:
+    user-url: http://localhost:8080
+server:
+  port: 8081
