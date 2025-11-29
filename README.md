@@ -45,23 +45,23 @@ graph
 
 **Core & Infrastructure:**
 
-- Java 21 (LTS)
+- Java 21
 - Virtual Threads (Project Loom)
-- Spring Boot 3.5.5
+- Spring Boot 3
 - Docker & Docker Compose
 
 **Data:**
 
 - PostgreSQL 17
 - Spring Data JPA
-- Flyway 11.15.0
+- Flyway
 
 **Communications & API:**
 
 - Spring Cloud OpenFeign
 - RFC 7807 (Problem Details)
 - SpringDoc OpenAPI
-- MapStruct 1.6.3
+- MapStruct
 
 ---
 
